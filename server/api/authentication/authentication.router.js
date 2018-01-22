@@ -4,17 +4,17 @@ var userCtrl = require('./../userCredential/userCredential.controller');
 // const logger = require('./../../../../applogger');
 
 // authentication of user
-router.post('/', function (req, res) {
+router.post('/', function(req, res) {
     // let username = req.query.email;
     // let password = req.query.password;
     let user = req.body;
-    console.log('-------------------->>>>>>>>>', req.body)
+    console.log('Login Request : ', req.body)
     try {
         if (!user) {
             console.log('Invalid user');
             throw new Error('Invalid inputs passed...!');
         }
-        userCtrl.getProfile(user.email).then((successResult) => {
+        userCtrl.getUserData(user.email).then((successResult) => {
             console.log('GOT THE DATA -->>>>>', successResult);
 
             if (successResult.length > 0) {

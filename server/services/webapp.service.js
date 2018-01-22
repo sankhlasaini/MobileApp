@@ -52,35 +52,9 @@ function setupMiddlewares(app) {
     return app;
 }
 
-function setupMongooseConnections() {
-    mongoose.connect(config.MONGO.mongoURL);
-
-    mongoose.connection.on('connected', function() {
-        logger.debug('Mongoose is now connected to ', config.MONGO.mongoURL);
-    });
-
-    mongoose.connection.on('error', function(err) {
-        logger.error('Error in Mongoose connection: ', err);
-    });
-
-    mongoose.connection.on('disconnected', function() {
-        logger.debug('Mongoose is now disconnected..!');
-    });
-
-    process.on('SIGINT', function() {
-        mongoose.connection.close(function() {
-            logger.info(
-                'Mongoose disconnected on process termination'
-            );
-            process.exit(0);
-        });
-    });
-}
-
 // App Constructor function is exported
 module.exports = {
     createApp: createApp,
     setupRestRoutes: setupRestRoutes,
-    setupMiddlewares: setupMiddlewares,
-    setupMongooseConnections: setupMongooseConnections
+    setupMiddlewares: setupMiddlewares
 };

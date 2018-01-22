@@ -66,7 +66,7 @@ router.patch('/', function(req, res) {
             console.log('Invalid inputs passed');
             throw new Error('Invalid inputs passed...!');
         }
-        userCtrl.editProfile(profileData, username, sectionName).then((successResult) => {
+        userCtrl.editUser(profileData, username, sectionName).then((successResult) => {
             return res.status(201).send({ data: successResult, success: true, "authToken": req.authToken });
         }, (errResult) => {
             // Log the error for internal use
@@ -90,7 +90,7 @@ router.delete('/', function(req, res) {
             console.log('Invalid inputs passed');
             throw new Error('Invalid inputs passed...!');
         }
-        prflCtrl.deleteProfile(profileData).then((successResult) => {
+        prflCtrl.deleteUser(profileData).then((successResult) => {
             return res.status(201).send({ result: successResult, "authToken": req.authToken });
         }, (errResult) => {
             // Log the error for internal use

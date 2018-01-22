@@ -6,15 +6,16 @@ const profileCtrl = require('./../profile/profile.controller');
 
 
 
-const getProfile = function(username) {
+const getUserData = function(username) {
     return new Promise((resolve, reject) => {
         UserModel.find({ username: username }, function(err, data) {
             if (err) {
-                logger.error('Profile data error' + err);
+                logger.error('User data error' + err);
                 reject(err);
             } else {
-                logger.debug('Got Profile Data');
+                logger.debug('Got User Data');
                 // inserts profile details
+                console.log(data);
                 resolve(data);
             }
         });
@@ -61,7 +62,7 @@ const createUser = function(username, user) {
 
 
 // NOT WORKING
-const editProfile = function(profileData, username, sectionName) {
+const editUser = function(profileData, username, sectionName) {
     let obj = {};
     obj[sectionName] = profileData;
     return new Promise((resolve, reject) => {
@@ -77,11 +78,11 @@ const editProfile = function(profileData, username, sectionName) {
 };
 
 
-const deletePerofile = function(profileObj) {};
+const deleteUser = function(profileObj) {};
 
 module.exports = {
-    getProfile: getProfile,
+    getUserData: getUserData,
     createUser: createUser,
-    editProfile: editProfile,
-    deletePerofile: deletePerofile
+    editUser: editUser,
+    deleteUser: deleteUser
 };
