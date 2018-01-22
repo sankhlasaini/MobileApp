@@ -1,0 +1,37 @@
+login:
+  host: 'proxy4.wipro.com'
+  path: 'https://qaisam.apps.platform.deltaverge.com/oauth/token'
+  port: 8080
+
+referralInvitation:
+  host: 'qapanm.apps.platform.deltaverge.com'
+  path: '/api/Panm.PartyInvitation.Party.invite'
+
+addetails:
+  adidpwd:'sameers@aprl_123'
+
+masterData:
+  host: 'proxy4.wipro.com'
+  path: 'http://qapanm.apps.platform.deltaverge.com/api/Panm.PartyList.Party.findAll'
+  port: 8080
+
+
+explorePartner:
+  host: 'proxy4.wipro.com'
+  path: 'http://qapanm.apps.platform.deltaverge.com/api/Panm.PartyNetwork.Party.findAllPartners'
+  port: 8080
+
+addProductManual:
+  host: 'proxy4.wipro.com'
+  path: 'https://qapcmfacade.apps.platform.deltaverge.com/api/product/add'
+  port: 8080
+
+connectTo:
+  host: 'proxy4.wipro.com'
+  path: 'http://qapanm.apps.platform.deltaverge.com/api/Panm.PartyNetwork.Party.createNetwork'
+  port: 8080
+
+approveOrRejectPartnerRequest:
+  host: 'proxy4.wipro.com'
+  path: 'http://qapanm.apps.platform.deltaverge.com/api/Panm.PartyNetwork.Party.updateNetwork'
+  port: 8080

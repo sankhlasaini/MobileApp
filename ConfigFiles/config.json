@@ -1,0 +1,27 @@
+{
+    "deltaVergeAPI"             :  "qaisam.apps.platform.deltaverge.com",
+    "tradeResourceApi"          :  "trade.apps.platform.deltaverge.com",
+    "resourceApi"               :  "qaisam.apps.platform.deltaverge.com",
+    "partyonboardingAPI"        :  "partyonboarding.apps.platform.deltaverge.com",
+    "otpGeneratePath"           :  "/api/Panm.PartyOnBoarding.PartyIdentityOTP.create",
+    "otpValidatePath"           :  "/api/Panm.PartyOnBoarding.PartyIdentityOTP.approve",
+    "submitUserDetailsPath"     :  "/api/Panm.PartyOnBoarding.PartyRegistration.create",
+    "tradeResourcePath"         :  "/api/isam/resources/Trade",
+    "PORT"                      :  "3000",
+    "myServerCredentials"       :  "webui@wipro.com:webuisecret",
+    "getUserPath"               :  "/api/users/",
+    "loginUserPath"             :  "/oauth/token",
+    "addUserPath"               :  "/api/users",
+    "facebookAuth"              :
+    {
+        "clientID"              :  "393125074398372",
+        "clientSecret"          :  "0ff6330259ee2b39a78b96799d6fc8f3",
+        "callbackUrl"           :  "http://portal.apps.platform.deltaverge.com/auth/facebook/callback"
+    },
+     "googleAuth"               :
+    {
+        "clientID"              :  "44231114381-0j38lm9cl8tm9nfqjl0bmbjoh42k1eh9.apps.googleusercontent.com",
+        "clientSecret"          :  "P1ZskMMc-5t9NMM__jY_8mlZ",
+        "callbackUrl"           :  "http://portal.apps.platform.deltaverge.com/auth/google/callback"
+    }
+}

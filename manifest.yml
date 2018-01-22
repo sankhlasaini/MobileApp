@@ -1,0 +1,8 @@
+applications:
+- name: demo
+  memory: 2048M
+  instances: 1
+  host: demo
+  path: .
+  command: export NODE_ENV=production
+  # command: node server

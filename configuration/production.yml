@@ -1,0 +1,30 @@
+login:
+  host: 'qaisam.apps.platform.deltaverge.com'
+  path: '/oauth/token'
+
+referralInvitation:
+  host: 'qapanm.apps.platform.deltaverge.com'
+  path: '/api/Panm.PartyInvitation.Party.invite'
+
+addetails:
+  adidpwd:'sameers@aprl_123'
+
+masterData:
+  host: 'qapanm.apps.platform.deltaverge.com'
+  path: '/api/Panm.PartyList.Party.findAll'
+
+explorePartner:
+  host: 'qapanm.apps.platform.deltaverge.com'
+  path: '/api/Panm.PartyNetwork.Party.findAllPartners'
+
+addProductManual:
+  host: 'qapcmfacade.apps.platform.deltaverge.com'
+  path: '/api/product/add'
+
+connectTo:
+  host: 'qapanm.apps.platform.deltaverge.com'
+  path: '/api/Panm.PartyNetwork.Party.createNetwork'
+
+approveOrRejectPartnerRequest:
+  host: 'qapanm.apps.platform.deltaverge.com'
+  path: '/api/Panm.PartyNetwork.Party.updateNetwork'
