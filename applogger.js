@@ -8,6 +8,6 @@ const logger = log4js.getLogger();
 // const debug = log4js.getLogger('debug');
 // const error = log4js.getLogger('error');
 
-logger.setLevel('DEBUG');
+logger.level = 'debug';
 
 module.exports = logger;

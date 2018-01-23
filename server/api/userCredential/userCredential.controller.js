@@ -14,8 +14,6 @@ const getUserData = function(username) {
                 reject(err);
             } else {
                 logger.debug('Got User Data');
-                // inserts profile details
-                console.log(data);
                 resolve(data);
             }
         });
@@ -36,7 +34,6 @@ const createUser = function(username, user) {
                 reject(err);
             } else {
                 logger.info('user credential added successfully');
-
                 profileCtrl.createProfile(username, userRegData).then((successResult) => {
                     resolve({ success: true, msg: 'Successfully Registered' });
                     console.log('\n\n\nAdded in BOTH \n\n\n')

@@ -1,26 +1,23 @@
 var router = require('express').Router();
 var jwt = require('jsonwebtoken');
 var userCtrl = require('./../userCredential/userCredential.controller');
-// const logger = require('./../../../../applogger');
+const logger = require('./../../../applogger');
 
 // authentication of user
 router.post('/', function(req, res) {
-    // let username = req.query.email;
-    // let password = req.query.password;
     let user = req.body;
-    console.log('Login Request : ', req.body)
+    logger.info('Login Request : ', req.body)
     try {
         if (!user) {
             console.log('Invalid user');
+            logger.error('Invalid User Data');
             throw new Error('Invalid inputs passed...!');
         }
         userCtrl.getUserData(user.email).then((successResult) => {
-            console.log('GOT THE DATA -->>>>>', successResult);
-
             if (successResult.length > 0) {
-                console.log('yes user found');
+                console.log('\nUser found checking for Credential...');
                 if (successResult[0].password === user.password) {
-                    console.log('password match');
+                    logger.info('User Authenticated : ', user.email);
                     let userDetails = {
                         username: successResult[0].username,
                     };
@@ -29,7 +26,7 @@ router.post('/', function(req, res) {
                     });
                     return res.status(201).send({ authToken: userToken, msg: 'user authenticated', success: true });
                 } else {
-                    console.log('password Wrong');
+                    logger.info('Password Wrong : ', user.email);
                     return res.status(201).send({ msg: 'password wrong', success: false });
                 }
             } else {
@@ -38,12 +35,12 @@ router.post('/', function(req, res) {
 
         }, (errResult) => {
             // Log the error for internal use
-            console.log('Internal error occurred');
+            logger.error('Internal error occurred');
             return res.status(500).send({ error: 'Internal error occurred, please try later..!', "authToken": req.authToken });
         });
     } catch (err) {
         // Log the Error for internal use
-        console.log('Exception occurred' + err);
+        logger.error('Exception occurred' + err);
         res.send({ error: 'Failed to complete successfully, please check the request and try again..!', "authToken": req.authToken });
         return;
     }
