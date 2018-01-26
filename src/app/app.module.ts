@@ -1,94 +1,78 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
-import { MaterialModule, MdNativeDateModule, DateAdapter, NativeDateAdapter } from '@angular/material';
-import { RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule, PreloadAllModules } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { AppRoutingModule } from './app-routing.module';
-import { PostLoginHeaderComponent } from './components/postLogin/post-login-header/post-login-header.component';
-import { PreLoginLayoutComponent } from './components/preLogin/pre-login-layout/pre-login-layout.component';
-import { PreLoginContentComponent } from './components/preLogin/pre-login-content/pre-login-content.component';
-import { SelectionDialogComponent } from './components/preLogin/selection-dialog/selection-dialog.component';
-import { ClientSpeakDialogComponent } from './components/preLogin/client-speak-dialog/client-speak-dialog.component';
-import { WhitePaperDialogComponent } from './components/preLogin/white-paper-dialog/white-paper-dialog.component';
-import { CaseStudyDialogComponent } from './components/preLogin/case-study-dialog/case-study-dialog.component';
-import { NewsFeedDialogComponent } from './components/preLogin/news-feed-dialog/news-feed-dialog.component';
-import { LoginComponent } from './components/loginComponents/login/login.component';
-import { SignUpComponent } from './components/loginComponents/sign-up/sign-up.component';
-import { LoginLayoutComponent } from './components/loginComponents/login-layout/login-layout.component';
-import { AuthGuard } from 'app/AuthGuard/auth.guard';
-import { Angular2SocialLoginModule } from 'angular2-social-login';
-import { DashboardComponent } from './components/postLogin/dashboard/dashboard.component';
-import { ProfileComponent } from './components/postLogin/profile/profile.component';
-import { ProfileService } from 'app/services/profile.service';
-import { LoginService } from 'app/services/login.service';
-import { SharedService } from 'app/services/shared.service';
-import { PincodeComponent } from './components/postLogin/pincode/pincode.component';
-import { DataTableModule } from 'angular2-datatable';
-import { GovtInfoComponent } from './components/postLogin/govt-info/govt-info.component';
-import { HospitalComponent } from './components/postLogin/hospital/hospital.component';
 
-let providers = {
+/*
+ * Platform and Environment providers/directives/pipes
+ */
+import { environment } from 'environments/environment';
+import { ROUTES } from './app.routes';
+// App is our top level component
+import { AppComponent } from './app.component';
+import { APP_RESOLVER_PROVIDERS } from './app.resolver';
+import { AppState, InternalStateType } from './app.service';
+import { HomeComponent } from './home';
+import { AboutComponent } from './about';
+import { NoContentComponent } from './no-content';
+import { XLargeDirective } from './home/x-large';
+import { DevModuleModule } from './+dev-module';
 
-  'google': {
-    'clientId': '1095703142723-oombd1h7u6lqvvptouu7bvq8dssr09tu.apps.googleusercontent.com'
-  },
-  'facebook': {
-    'clientId': '1764235857200435',
-    'apiVersion': 'v2.9' //like v2.4 
-  }
+import '../styles/styles.scss';
+import '../styles/headings.css';
+
+// Application wide providers
+const APP_PROVIDERS = [
+  ...APP_RESOLVER_PROVIDERS,
+  AppState
+];
+
+type StoreType = {
+  state: InternalStateType,
+  restoreInputValues: () => void,
+  disposeOldHosts: () => void
 };
 
+/**
+ * `AppModule` is the main entry point into Angular2's bootstraping process
+ */
 @NgModule({
+  bootstrap: [ AppComponent ],
   declarations: [
     AppComponent,
-    PostLoginHeaderComponent,
-    PreLoginLayoutComponent,
-    PreLoginContentComponent,
-    SelectionDialogComponent,
-    ClientSpeakDialogComponent,
-    WhitePaperDialogComponent,
-    CaseStudyDialogComponent,
-    NewsFeedDialogComponent,
-    LoginComponent,
-    SignUpComponent,
-    LoginLayoutComponent,
-    DashboardComponent,
-    ProfileComponent,
-    PincodeComponent,
-    GovtInfoComponent,
-    HospitalComponent,
+    AboutComponent,
+    HomeComponent,
+    NoContentComponent,
+    XLargeDirective
   ],
+  /**
+   * Import Angular's modules.
+   */
   imports: [
     BrowserModule,
-    Angular2SocialLoginModule,
     BrowserAnimationsModule,
-    FlexLayoutModule,
     FormsModule,
-    HttpModule,
-    ReactiveFormsModule,
-    MaterialModule,
-    AppRoutingModule,
-    MdNativeDateModule,
-    DataTableModule
-  ],
-  entryComponents: [
-    SelectionDialogComponent,
-    ClientSpeakDialogComponent,
-    WhitePaperDialogComponent,
-    CaseStudyDialogComponent,
-    NewsFeedDialogComponent,
-  ],
+    HttpClientModule,
+    RouterModule.forRoot(ROUTES, {
+      useHash: Boolean(history.pushState) === false,
+      preloadingStrategy: PreloadAllModules
+    }),
 
+    /**
+     * This section will import the `DevModuleModule` only in certain build types.
+     * When the module is not imported it will get tree shaked.
+     * This is a simple example, a big app should probably implement some logic
+     */
+    ...environment.showDevModule ? [ DevModuleModule ] : [],
+  ],
+  /**
+   * Expose our Services and Providers into Angular's dependency injection.
+   */
   providers: [
-    { provide: DateAdapter, useClass: NativeDateAdapter },
-    AuthGuard, ProfileService, LoginService, SharedService
-  ],
-  bootstrap: [AppComponent]
+    environment.ENV_PROVIDERS,
+    APP_PROVIDERS
+  ]
 })
-export class AppModule { }
-
-Angular2SocialLoginModule.loadProvidersScripts(providers);
+export class AppModule {}
