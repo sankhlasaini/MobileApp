@@ -1,46 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title><%= htmlWebpackPlugin.options.title %></title>
-  <meta name="description" content="<%= htmlWebpackPlugin.options.title %>">
-  <!-- base url -->
-  <base href="<%= htmlWebpackPlugin.options.metadata.baseUrl %>">
-  <% if (webpackConfig.htmlElements.headTags) { %>
-  <!-- Configured Head Tags  -->
-  <%= webpackConfig.htmlElements.headTags %>
-  <% } %>
+    <meta charset="utf-8">
+    <title>MY APP</title>
+    <base href="/">
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 
-  <%= htmlWebpackPlugin.files.webpackManifest %>
-
-  <% if (htmlWebpackPlugin.options.metadata.isDevServer && htmlWebpackPlugin.options.metadata.HMR !== true) { %>
-  <!-- Webpack Dev Server reload -->
-  <script src="/webpack-dev-server.js"></script>
-  <% } %>
-
-  <!-- Async Google Analytics: change UA-71073175-1 to be your site's ID -->
-  <script>
-    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-    ga('create', 'UA-71073175-1', 'auto');
-    ga('send', 'pageview');
-  </script>
-  <script async src="https://www.google-analytics.com/analytics.js"></script>
-  <!-- End Google Analytics -->
-
-  <!-- CSS will be injected by webpack here -->
-  <!-- Preload link tags will be injected by webpack here -->
 
 </head>
+<!--<script src="/socket.io/socket.io.js"></script>-->
+<!--<script src="https://code.jquery.com/jquery-1.11.1.js"></script>-->
+<!--<script>
+    $(function () {
+        var socket = io();
+        $('form').submit(function () {
+            socket.emit('chat message', $('#m').val());
+            $('#m').val('');
+            return false;
+        });
+        socket.on('chat message', function (msg) {
+            $('#messages').append($('<li>').text(msg));
+        });
+    });
+
+</script>-->
 
 <body>
+    <script>
+        window.__theme = 'bs4';
+    </script>
+    <app-root>
+        <p class="loadingHtml">Please Wait...</p>
+    </app-root>
 
-  <app>
-    Loading...
-  </app>
-
-  <!-- Scripts will be injected by webpack here -->
 </body>
+
+
+<link type="text/css" rel="stylesheet" media="all" href="https://comet.apps.platform.deltaverge.com/cometchatcss.php" />
+<!--<script type="text/javascript" src="https://cometchat.apps.platform.deltaverge.com/cometchatjs.php" charset="utf-8"></script>-->
+
 </html>

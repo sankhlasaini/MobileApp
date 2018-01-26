@@ -1,0 +1,92 @@
+.knowledgeSection {
+    height: 100%;
+    /*border: 2px solid black;*/
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.knowledgeRow1 {
+    margin-bottom: 10px;
+}
+
+.knowledgeSection md-card {
+    padding: 10px;
+}
+
+.knowledgeSection md-card md-card-header {
+    border-bottom: 1px dotted red;
+}
+
+.knowledgeSection md-card md-card-header md-card-title {
+    margin-bottom: 5px;
+    margin-left: -5px;
+    font-weight: bold;
+}
+
+.contentHead {
+    font-weight: bold;
+    padding: 10px;
+}
+
+.contentTextPoints {
+    padding: 10px 5px 0px 5px;
+    font-size: 80%;
+    color: #ee534f;
+}
+
+.contentText {
+    font-size: 90%;
+    padding: 10px;
+}
+
+.knowledgeImg {
+    position: absolute;
+    height: 45px;
+    right: -10px;
+    margin-right: 20px;
+    margin-top: -5px;
+}
+
+.knowledgeRow {
+    min-height: 49%;
+}
+
+.miniFabBtn {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    font-size: 25px;
+    line-height: normal;
+    float: right;
+    bottom: 5px;
+    right: 5px;
+}
+
+@media (max-width: 100000px) {
+    .knowledgeRow {
+        max-height: 49%;
+    }
+    .knowledgeSection {
+        overflow-y: hidden;
+    }
+}
+
+@media (max-width: 1280px) {
+    .knowledgeRow {
+        min-height: 100%;
+        max-height: 120%;
+    }
+    .knowledgeSection {
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: 960px) {
+    .knowledgeRow {
+        min-height: 280px;
+        /*max-height: 120%;*/
+    }
+    .knowledgeSection {
+        overflow-y: hidden;
+    }
+}
